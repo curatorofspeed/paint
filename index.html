@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="color-scheme" content="light" />
+<title>Lapiers Painting — Interior &amp; Exterior Painters on the Eastside, WA</title>
+<meta name="description" content="Owner-operated interior and exterior house painting across the Eastside and Pacific Northwest. Interiors, exteriors, mill-work, pressure washing, and staining by Chris Lapiers. Free quotes — call or text 425-210-6481." />
+<meta name="theme-color" content="#2B3A52" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Lapiers Painting — Eastside House Painting, Done Right" />
+<meta property="og:description" content="Owner-operated interior &amp; exterior painting across the Eastside, WA. Careful prep, clean cut-ins, a finish that holds up to Northwest weather." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&family=Spline+Sans+Mono:wght@500;600&display=swap" rel="stylesheet" />
+
+<style>
+  :root{
+    color-scheme: light;
+    --fog:#EDEBE6;          /* warm off-white — primed wall / coastal fog */
+    --fog-2:#E3E0D9;        /* slightly deeper fog for surfaces */
+    --cedar-line:#D4CFC6;   /* weathered wood — borders */
+    --ink:#1B1F26;          /* near-black charcoal — text */
+    --ink-soft:#3C424C;     /* secondary text */
+    --slate:#2B3A52;        /* deep slate blue — primary brand */
+    --slate-700:#223046;
+    --brush:#7E97B8;        /* the paint swatch from the card */
+    --brush-deep:#4A6489;
+
+    /* paint-chip tonal ramp (light -> deep) */
+    --chip-1:#BCC8DA;
+    --chip-2:#94A7C3;
+    --chip-3:#6C84A8;
+    --chip-4:#4A6489;
+    --chip-5:#2B3A52;
+
+    --maxw:1140px;
+    --pad:clamp(20px,5vw,40px);
+
+    --ff-display:"Bricolage Grotesque",system-ui,sans-serif;
+    --ff-body:"Hanken Grotesk",system-ui,sans-serif;
+    --ff-mono:"Spline Sans Mono",ui-monospace,monospace;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;color-scheme:light;background:#EDEBE6}
+  body{
+    font-family:var(--ff-body);
+    color:var(--ink);
+    background-color:var(--fog);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    position:relative;
+  }
+  /* faint paper/primed-wall texture for tactility */
+  body::before{
+    content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.045;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  a{color:inherit;text-decoration:none}
+  main{background:var(--fog)}
+  img{max-width:100%;display:block}
+  ::selection{background:var(--brush);color:#fff}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--pad)}
+
+  .eyebrow{
+    font-family:var(--ff-mono);
+    font-size:.72rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--brush-deep);
+  }
+
+  /* ---------- buttons ---------- */
+  .btn{
+    display:inline-flex;align-items:center;gap:.5em;
+    font-family:var(--ff-body);font-weight:600;font-size:1rem;
+    padding:.85em 1.4em;border-radius:2px;border:1.5px solid transparent;
+    cursor:pointer;transition:transform .15s ease,background .2s ease,color .2s ease,box-shadow .2s ease;
+    line-height:1;white-space:nowrap;
+  }
+  .btn-primary{background:var(--slate);color:var(--fog)}
+  .btn-primary:hover{background:var(--slate-700);transform:translateY(-2px);box-shadow:0 10px 22px -12px rgba(43,58,82,.7)}
+  .btn-ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
+  .btn-ghost:hover{background:var(--ink);color:var(--fog);transform:translateY(-2px)}
+  .btn-light{background:var(--fog);color:var(--slate);border-color:transparent}
+  .btn-light:hover{transform:translateY(-2px);box-shadow:0 10px 22px -12px rgba(0,0,0,.5)}
+  .btn:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{
+    outline:3px solid var(--brush);outline-offset:3px;
+  }
+
+  /* ---------- nav ---------- */
+  header.nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(237,235,230,.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--cedar-line);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:1rem;height:72px}
+  .brand{display:flex;align-items:center;gap:.6rem;font-family:var(--ff-display)}
+  .brand .swatch{width:18px;height:18px;background:var(--brush);border-radius:1px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.12);flex:none}
+  .brand .name{font-weight:800;font-size:1.12rem;letter-spacing:-.01em;line-height:1}
+  .brand .name small{display:block;font-family:var(--ff-mono);font-weight:500;font-size:.56rem;letter-spacing:.32em;color:var(--brush-deep);margin-top:3px}
+  .nav-links{display:flex;align-items:center;gap:1.6rem}
+  .nav-links a{font-size:.95rem;font-weight:500;color:var(--ink-soft);transition:color .15s}
+  .nav-links a:hover{color:var(--ink)}
+  .nav-cta{display:flex;align-items:center;gap:.8rem}
+  .nav-phone{font-family:var(--ff-mono);font-weight:600;font-size:.92rem;color:var(--slate);white-space:nowrap}
+  .nav-phone:hover{color:var(--brush-deep)}
+  @media(max-width:860px){.nav-links{display:none}}
+  @media(max-width:520px){.nav-phone{display:none}}
+
+  /* ---------- hero ---------- */
+  .hero{padding:clamp(56px,9vw,104px) 0 clamp(48px,7vw,84px)}
+  .hero .eyebrow{margin-bottom:1.4rem}
+  .hero h1{
+    font-family:var(--ff-display);font-weight:800;
+    font-size:clamp(2.6rem,7.2vw,5.1rem);line-height:.98;letter-spacing:-.025em;
+    max-width:14ch;
+  }
+  .hero h1 .accent{position:relative;display:inline-block;white-space:nowrap;color:var(--slate)}
+  .hero h1 .accent .stroke{
+    position:absolute;left:-6%;right:-6%;bottom:.04em;width:112%;height:.62em;z-index:0;
+    clip-path:inset(0 0 0 0);
+  }
+  .hero h1 .accent .stroke.animate{animation:paintOn .85s cubic-bezier(.4,0,.1,1) .35s both}
+  .hero h1 .accent span{position:relative;z-index:1}
+  @keyframes paintOn{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+
+  .hero p.lede{
+    font-size:clamp(1.08rem,2.1vw,1.32rem);color:var(--ink-soft);
+    max-width:46ch;margin-top:1.8rem;
+  }
+  .hero-actions{display:flex;flex-wrap:wrap;align-items:center;gap:1rem 1.4rem;margin-top:2.4rem}
+  .call-block{display:flex;flex-direction:column;line-height:1.2}
+  .call-block .k{font-family:var(--ff-mono);font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--brush-deep)}
+  .call-block .v{font-family:var(--ff-display);font-weight:700;font-size:1.32rem;color:var(--ink);letter-spacing:-.01em}
+  .call-block .v:hover{color:var(--slate)}
+
+  .hero-meta{
+    display:flex;flex-wrap:wrap;gap:.5rem 1.6rem;margin-top:2.8rem;
+    padding-top:1.4rem;border-top:1px solid var(--cedar-line);
+    font-size:.92rem;color:var(--ink-soft);
+  }
+  .hero-meta span{display:inline-flex;align-items:center;gap:.5rem}
+  .hero-meta .dot{width:7px;height:7px;border-radius:50%;background:var(--brush);flex:none}
+
+  /* reveal on load */
+  .reveal{opacity:0;transform:translateY(16px)}
+  .hero .reveal{animation:rise .7s ease forwards}
+  .hero .d1{animation-delay:.05s}.hero .d2{animation-delay:.15s}.hero .d3{animation-delay:.25s}.hero .d4{animation-delay:.35s}.hero .d5{animation-delay:.45s}
+  @keyframes rise{to{opacity:1;transform:none}}
+
+  /* brushed divider */
+  .brush-rule{height:26px;color:var(--cedar-line);margin:0 auto;max-width:var(--maxw);padding-inline:var(--pad)}
+  .brush-rule svg{width:100%;height:100%;display:block}
+
+  /* ---------- generic section ---------- */
+  .section{padding:clamp(56px,8vw,96px) 0}
+  .section-head{max-width:62ch}
+  .section-head .eyebrow{display:block;margin-bottom:1rem}
+  .section-head h2{
+    font-family:var(--ff-display);font-weight:700;letter-spacing:-.02em;line-height:1.04;
+    font-size:clamp(2rem,4.6vw,3.1rem);color:var(--ink);
+  }
+  .section-head p{margin-top:1.1rem;font-size:1.1rem;color:var(--ink-soft);max-width:52ch}
+
+  /* ---------- owner ---------- */
+  .owner{background:var(--slate);color:var(--fog)}
+  .owner .grid{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
+  .owner .eyebrow{color:var(--brush)}
+  .owner h2{font-family:var(--ff-display);font-weight:700;font-size:clamp(2rem,4.6vw,3.2rem);letter-spacing:-.02em;line-height:1.02}
+  .owner .body{margin-top:1.5rem;font-size:1.1rem;color:#D6DBE4;max-width:48ch}
+  .owner .body strong{color:#fff;font-weight:600}
+  .owner-points{display:flex;flex-direction:column;gap:1px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.14);border-radius:3px;overflow:hidden}
+  .owner-points li{list-style:none;display:flex;align-items:center;gap:1rem;padding:1.15rem 1.3rem;background:var(--slate-700)}
+  .owner-points .n{font-family:var(--ff-mono);font-size:.78rem;color:var(--brush);font-weight:600;flex:none}
+  .owner-points .t{font-weight:500}
+  @media(max-width:760px){.owner .grid{grid-template-columns:1fr}}
+
+  /* ---------- services / fan deck ---------- */
+  .deck{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:3rem;align-items:end}
+  .chip{
+    display:flex;flex-direction:column;background:#fff;border:1px solid var(--cedar-line);
+    border-radius:4px;overflow:hidden;transition:transform .22s ease,box-shadow .22s ease;
+    transform:translateY(var(--y,0));
+  }
+  .chip:nth-child(1){--y:24px}.chip:nth-child(2){--y:12px}.chip:nth-child(3){--y:0}.chip:nth-child(4){--y:12px}.chip:nth-child(5){--y:24px}
+  .chip:hover{transform:translateY(calc(var(--y,0) - 8px));box-shadow:0 18px 34px -20px rgba(43,58,82,.55)}
+  .chip .block{
+    position:relative;aspect-ratio:1/1.18;display:flex;align-items:flex-end;padding:1rem;overflow:hidden;
+  }
+  .chip .block::after{ /* brushed sheen */
+    content:"";position:absolute;inset:0;opacity:.5;mix-blend-mode:soft-light;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='160'%3E%3Cfilter id='b'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.012 0.16' numOctaves='2'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23b)'/%3E%3C/svg%3E");
+  }
+  .chip .sname{position:relative;z-index:1;font-family:var(--ff-display);font-weight:700;font-size:1.18rem;letter-spacing:-.01em;line-height:1.05}
+  .chip .meta{padding:.95rem 1rem 1.15rem}
+  .chip .code{font-family:var(--ff-mono);font-size:.66rem;font-weight:600;letter-spacing:.16em;color:var(--brush-deep)}
+  .chip .desc{margin-top:.45rem;font-size:.86rem;color:var(--ink-soft);line-height:1.45}
+
+  .chip:nth-child(1) .block{background:var(--chip-1)} .chip:nth-child(1) .sname{color:var(--ink)}
+  .chip:nth-child(2) .block{background:var(--chip-2)} .chip:nth-child(2) .sname{color:var(--ink)}
+  .chip:nth-child(3) .block{background:var(--chip-3)} .chip:nth-child(3) .sname{color:var(--ink)}
+  .chip:nth-child(4) .block{background:var(--chip-4)} .chip:nth-child(4) .sname{color:var(--fog)}
+  .chip:nth-child(5) .block{background:var(--chip-5)} .chip:nth-child(5) .sname{color:var(--fog)}
+
+  @media(max-width:880px){
+    .deck{grid-template-columns:repeat(2,1fr);gap:12px;align-items:stretch}
+    .chip{--y:0 !important}
+    .chip:hover{transform:translateY(-6px)}
+    .chip .block{aspect-ratio:1/.58}
+    .chip .sname{font-size:1.05rem}
+  }
+  @media(max-width:620px){
+    .deck{grid-template-columns:1fr;gap:10px;margin-top:2rem}
+    .chip{flex-direction:row;align-items:stretch}
+    .chip .block{width:38%;max-width:148px;min-height:110px;aspect-ratio:auto;padding:.8rem}
+    .chip .sname{font-size:1.04rem;line-height:1.04}
+    .chip .meta{flex:1;display:flex;flex-direction:column;justify-content:center;padding:.8rem .95rem}
+    .chip .code{margin-bottom:.1rem}
+    .chip .desc{font-size:.84rem;margin-top:.3rem}
+    .chip:hover{transform:translateY(-4px)}
+  }
+
+  /* ---------- process ---------- */
+  .process{background:var(--fog-2)}
+  .steps{margin-top:2.6rem;display:grid;grid-template-columns:repeat(5,1fr);gap:0}
+  .step{padding:1.6rem 1.4rem 1.6rem 0;border-top:2px solid var(--ink);position:relative}
+  .step:not(:last-child){margin-right:1px}
+  .step .num{font-family:var(--ff-mono);font-size:.8rem;font-weight:600;color:var(--brush-deep);letter-spacing:.1em}
+  .step h3{font-family:var(--ff-display);font-weight:700;font-size:1.18rem;margin:.7rem 0 .5rem;letter-spacing:-.01em}
+  .step p{font-size:.9rem;color:var(--ink-soft);line-height:1.5}
+  @media(max-width:820px){.steps{grid-template-columns:repeat(2,1fr);gap:0 1.6rem}.step{padding-right:0}}
+  @media(max-width:480px){.steps{grid-template-columns:1fr}}
+
+  /* ---------- area ---------- */
+  .area .wrap{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(2rem,5vw,4rem);align-items:center}
+  .towns{display:flex;flex-wrap:wrap;gap:.6rem}
+  .town{
+    font-family:var(--ff-mono);font-size:.82rem;font-weight:500;color:var(--slate);
+    padding:.5em .85em;border:1px solid var(--cedar-line);border-radius:2px;background:#fff;
+  }
+  .area-note{margin-top:1.6rem;font-size:.98rem;color:var(--ink-soft)}
+  @media(max-width:760px){.area .wrap{grid-template-columns:1fr}}
+
+  /* ---------- contact ---------- */
+  .contact{background:var(--slate);color:var(--fog)}
+  .contact .wrap{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(2rem,5vw,4.5rem)}
+  .contact .eyebrow{color:var(--brush)}
+  .contact h2{font-family:var(--ff-display);font-weight:700;font-size:clamp(2rem,4.6vw,3rem);letter-spacing:-.02em;line-height:1.04}
+  .contact .sub{margin-top:1.1rem;color:#D6DBE4;font-size:1.08rem;max-width:42ch}
+  .direct{margin-top:2rem;display:flex;flex-direction:column;gap:.9rem}
+  .direct a{display:flex;align-items:center;gap:.85rem;color:#fff;font-weight:500}
+  .direct a .ic{width:38px;height:38px;border-radius:3px;background:rgba(255,255,255,.12);display:grid;place-items:center;flex:none}
+  .direct a .ic svg{width:18px;height:18px;stroke:var(--brush)}
+  .direct a .big{font-family:var(--ff-display);font-weight:700;font-size:1.18rem}
+  .direct a:hover .ic{background:var(--brush);}
+  .direct a:hover .ic svg{stroke:#fff}
+
+  form.quote{background:var(--fog);color:var(--ink);border-radius:5px;padding:clamp(1.4rem,3vw,2rem)}
+  .field{margin-bottom:1.05rem}
+  .field label{display:block;font-family:var(--ff-mono);font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--brush-deep);margin-bottom:.45rem}
+  .field input,.field select,.field textarea{
+    width:100%;font-family:var(--ff-body);font-size:1rem;color:var(--ink);
+    padding:.78em .85em;border:1.5px solid var(--cedar-line);border-radius:3px;background:#fff;
+    transition:border-color .15s ease;
+  }
+  .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--brush)}
+  .field textarea{resize:vertical;min-height:96px}
+  .form-foot{display:flex;flex-wrap:wrap;align-items:center;gap:1rem;margin-top:.4rem}
+  .form-note{font-size:.82rem;color:var(--ink-soft);max-width:30ch}
+  .form-msg{font-size:.9rem;font-weight:600;margin-top:.6rem;min-height:1.2em}
+  .form-msg.err{color:#a23b2d}
+  .form-msg.ok{color:var(--brush-deep)}
+
+  /* photo upload */
+  .photo-drop{
+    border:1.5px dashed var(--brush);border-radius:4px;background:#fff;
+    padding:1.05rem 1rem;display:flex;align-items:center;gap:.85rem;cursor:pointer;
+    transition:background .15s ease,border-color .15s ease;
+  }
+  .photo-drop:hover,.photo-drop.drag{background:#F4F6FA;border-color:var(--slate)}
+  .photo-drop .pic{width:40px;height:40px;border-radius:3px;background:var(--chip-1);display:grid;place-items:center;flex:none}
+  .photo-drop .pic svg{width:20px;height:20px;stroke:var(--slate)}
+  .photo-drop .pt{font-weight:600;font-size:.96rem;color:var(--ink)}
+  .photo-drop .ps{font-size:.8rem;color:var(--ink-soft);margin-top:1px}
+  .photo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(76px,1fr));gap:.55rem;margin-top:.8rem}
+  .thumb{position:relative;aspect-ratio:1;border-radius:3px;overflow:hidden;border:1px solid var(--cedar-line);background:var(--fog-2)}
+  .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+  .thumb .rm{
+    position:absolute;top:3px;right:3px;width:22px;height:22px;border:none;border-radius:50%;
+    background:rgba(20,22,28,.78);color:#fff;font-size:14px;line-height:1;cursor:pointer;
+    display:grid;place-items:center;padding:0;
+  }
+  .thumb .rm:hover{background:#a23b2d}
+  .thumb.up::after{content:"";position:absolute;inset:0;background:rgba(43,58,82,.55)}
+  .thumb .spin{position:absolute;inset:0;z-index:1;display:grid;place-items:center}
+  .thumb .spin svg{width:22px;height:22px;animation:spin .9s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+
+  /* sent confirmation */
+  .sent-ok{text-align:center;padding:1.4rem .5rem 1rem}
+  .sent-ic{width:54px;height:54px;border-radius:50%;background:var(--slate);color:var(--fog);display:grid;place-items:center;margin:0 auto 1.1rem}
+  .sent-ic svg{width:26px;height:26px}
+  .sent-ok h3{font-family:var(--ff-display);font-weight:700;font-size:1.45rem;letter-spacing:-.01em;color:var(--ink)}
+  .sent-ok p{margin-top:.7rem;color:var(--ink-soft);font-size:1rem;max-width:34ch;margin-inline:auto}
+  .sent-ok a{color:var(--brush-deep);font-weight:600}
+
+  .human-check{max-width:260px}
+  /* honeypot: present in DOM but invisible/unfocusable for humans */
+  #hp{position:absolute!important;left:-9999px!important;top:auto;width:1px;height:1px;opacity:0;pointer-events:none}
+
+  @media(max-width:760px){.contact .wrap{grid-template-columns:1fr}}
+
+  /* ---------- footer ---------- */
+  footer.foot{background:var(--ink);color:#B9BEC7;padding:3rem 0 2.4rem}
+  .foot-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1.6rem;align-items:flex-start}
+  .foot .brand .name{color:#fff}
+  .foot-contact{display:flex;flex-direction:column;gap:.35rem;font-size:.94rem}
+  .foot-contact a:hover{color:#fff}
+  .foot-meta{font-family:var(--ff-mono);font-size:.74rem;letter-spacing:.04em;color:#7A808B;line-height:1.8;margin-top:.3rem}
+  .foot-rule{height:1px;background:rgba(255,255,255,.12);margin:2rem 0 1.4rem}
+  .foot-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.8rem;font-size:.8rem;color:#7A808B}
+  .placeholder{color:var(--brush);font-family:var(--ff-mono);font-size:.72rem}
+
+  /* scroll reveal */
+  .obs{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+  .obs.in{opacity:1;transform:none}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important;transition:none !important}
+    .reveal,.obs{opacity:1 !important;transform:none !important}
+    .hero h1 .accent .stroke{clip-path:none !important}
+    html{scroll-behavior:auto}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top" aria-label="Lapiers Painting home">
+      <span class="swatch" aria-hidden="true"></span>
+      <span class="name">Lapiers Painting<small>EASTSIDE&nbsp;·&nbsp;WA</small></span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#services">Services</a>
+      <a href="#process">How it works</a>
+      <a href="#area">Service area</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="nav-phone" href="tel:+14252106481">425&nbsp;210&nbsp;6481</a>
+      <a class="btn btn-primary" href="#contact">Free quote</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<main id="top">
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow reveal d1">Interior · Exterior · Mill-work · Pressure washing · Staining</p>
+    <h1 class="reveal d2">
+      Painted <span class="accent">
+        <svg class="stroke" viewBox="0 0 600 150" preserveAspectRatio="none" aria-hidden="true">
+          <defs>
+            <filter id="bristle" x="-5%" y="-30%" width="110%" height="160%">
+              <feTurbulence type="fractalNoise" baseFrequency="0.014 0.2" numOctaves="2" seed="7" result="n"/>
+              <feDisplacementMap in="SourceGraphic" in2="n" scale="11" xChannelSelector="R" yChannelSelector="G"/>
+              <feGaussianBlur stdDeviation="0.5"/>
+            </filter>
+          </defs>
+          <path filter="url(#bristle)" fill="#7E97B8"
+            d="M8,78 C40,46 110,44 190,52 C300,62 360,40 430,50 C520,62 560,58 592,70 C598,74 598,80 590,86 C470,108 360,92 250,98 C150,103 70,110 40,98 C18,90 6,96 8,80 Z"/>
+        </svg>
+        <span>right</span></span>, the first&nbsp;time.
+    </h1>
+    <p class="lede reveal d3">Owner-operated house painting across the Eastside. One painter from the first walkthrough to the final wipe-down — careful prep, clean cut-ins, and a finish built for Northwest weather.</p>
+    <div class="hero-actions reveal d4">
+      <a class="btn btn-primary" href="#contact">Get a free quote</a>
+      <a class="call-block" href="tel:+14252106481">
+        <span class="k">Call or text</span>
+        <span class="v">425-210-6481</span>
+      </a>
+    </div>
+    <div class="hero-meta reveal d5">
+      <span><span class="dot" aria-hidden="true"></span>Owner on every job</span>
+      <span><span class="dot" aria-hidden="true"></span>Free, itemized quotes</span>
+      <span><span class="dot" aria-hidden="true"></span>Homes across the greater Eastside</span>
+    </div>
+  </div>
+</section>
+
+<div class="brush-rule" aria-hidden="true">
+  <svg viewBox="0 0 1200 26" preserveAspectRatio="none">
+    <path d="M0,14 C150,7 260,18 420,13 C600,7 720,20 900,14 C1040,9 1120,16 1200,12" fill="none" stroke="currentColor" stroke-width="2"/>
+  </svg>
+</div>
+
+<!-- OWNER -->
+<section class="owner section">
+  <div class="wrap grid">
+    <div class="obs">
+      <span class="eyebrow">The painter</span>
+      <h2>Hi, I'm Chris.</h2>
+      <p class="body">Lapiers Painting is just that — <strong>me, Chris Lapiers</strong>, on your project start to finish. No rotating crews, no subs you've never met. I take interiors, exteriors, mill-work, staining, and pressure washing across the Eastside, and I treat every house like the people inside it still have to live there: careful prep, clean lines, a tidy worksite, and a finish that holds up to the rain.</p>
+    </div>
+    <ul class="owner-points obs">
+      <li><span class="n">01</span><span class="t">You deal with the owner, not a call center</span></li>
+      <li><span class="n">02</span><span class="t">Prep done properly so the coat actually lasts</span></li>
+      <li><span class="n">03</span><span class="t">Quality product and clean cut-ins, every edge</span></li>
+      <li><span class="n">04</span><span class="t">Site cleaned up at the end of each day</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section" id="services">
+  <div class="wrap">
+    <div class="section-head obs">
+      <span class="eyebrow">What I do</span>
+      <h2>A full deck of finishes.</h2>
+      <p>Inside or out, new construction or a tired old fence — here's how I can help. Need something not on the list? Just ask.</p>
+    </div>
+
+    <div class="deck">
+      <article class="chip obs">
+        <div class="block"><h3 class="sname">Interior</h3></div>
+        <div class="meta"><div class="code">INT — 01</div><p class="desc">Walls, ceilings, trim, and cabinets — low-mess, sharp lines, your rooms back fast.</p></div>
+      </article>
+      <article class="chip obs">
+        <div class="block"><h3 class="sname">Exterior</h3></div>
+        <div class="meta"><div class="code">EXT — 02</div><p class="desc">Siding, trim, and decks prepped and coated to stand up to rain, sun, and mildew.</p></div>
+      </article>
+      <article class="chip obs">
+        <div class="block"><h3 class="sname">Mill-work</h3></div>
+        <div class="meta"><div class="code">MIL — 03</div><p class="desc">Doors, casing, baseboards, and built-ins finished smooth with crisp, even edges.</p></div>
+      </article>
+      <article class="chip obs">
+        <div class="block"><h3 class="sname">Pressure&nbsp;wash</h3></div>
+        <div class="meta"><div class="code">PSW — 04</div><p class="desc">Siding, decks, fences, and driveways cleaned before paint — or on their own.</p></div>
+      </article>
+      <article class="chip obs">
+        <div class="block"><h3 class="sname">Staining</h3></div>
+        <div class="meta"><div class="code">STN — 05</div><p class="desc">Decks, fences, and cedar brought back to life and sealed to show off the grain.</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process section" id="process">
+  <div class="wrap">
+    <div class="section-head obs">
+      <span class="eyebrow">How it works</span>
+      <h2>Five steps, no surprises.</h2>
+    </div>
+    <div class="steps">
+      <div class="step obs"><div class="num">01</div><h3>Walkthrough</h3><p>We look at the project together and talk colors, scope, and timing.</p></div>
+      <div class="step obs"><div class="num">02</div><h3>Clear quote</h3><p>You get an itemized, no-pressure quote — the number you see is the number you pay.</p></div>
+      <div class="step obs"><div class="num">03</div><h3>Prep</h3><p>Wash, scrape, sand, patch, mask. The part most people skip, and the reason paint lasts.</p></div>
+      <div class="step obs"><div class="num">04</div><h3>Paint</h3><p>Quality product, careful coats, clean cut-ins, and a tidy site at the end of every day.</p></div>
+      <div class="step obs"><div class="num">05</div><h3>Final walk</h3><p>We walk it together and I don't pack up until it's right.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- AREA -->
+<section class="area section" id="area">
+  <div class="wrap">
+    <div class="section-head obs">
+      <span class="eyebrow">Service area</span>
+      <h2>Serving the Eastside &amp; beyond.</h2>
+      <p>Based on the Eastside and covering homes across King and south Snohomish County. Not sure if you're in range? Send a message — I'll let you know.</p>
+    </div>
+    <div class="obs">
+      <div class="towns" aria-label="Towns served">
+        <span class="town">Bellevue</span>
+        <span class="town">Kirkland</span>
+        <span class="town">Redmond</span>
+        <span class="town">Bothell</span>
+        <span class="town">Woodinville</span>
+        <span class="town">Sammamish</span>
+        <span class="town">Issaquah</span>
+        <span class="town">Mill Creek</span>
+        <span class="town">Snohomish</span>
+        <span class="town">Everett</span>
+        <span class="town">Mukilteo</span>
+        <span class="town">Monroe</span>
+      </div>
+      <p class="area-note">Plus the surrounding Northwest — if you're nearby, just ask.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact section" id="contact">
+  <div class="wrap">
+    <div class="obs">
+      <span class="eyebrow">Free quote</span>
+      <h2>Let's get your project on the calendar.</h2>
+      <p class="sub">Send a few details and I'll get back to you, usually the same day. Prefer to talk it through? Call or text anytime.</p>
+      <div class="direct">
+        <a href="tel:+14252106481">
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+          <span><span class="big">425-210-6481</span><br><span style="font-size:.85rem;color:#B9C2D0">Call or text</span></span>
+        </a>
+        <a href="mailto:Lapierspainting@gmail.com">
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></span>
+          <span><span class="big" style="font-size:1rem">Lapierspainting@gmail.com</span><br><span style="font-size:.85rem;color:#B9C2D0">Email me</span></span>
+        </a>
+      </div>
+    </div>
+
+    <form class="quote obs" id="quoteForm" novalidate>
+      <div class="field">
+        <label for="name">Your name</label>
+        <input id="name" name="name" type="text" autocomplete="name" placeholder="First and last" />
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" autocomplete="email" placeholder="you@email.com" />
+      </div>
+      <div class="field">
+        <label for="phone">Phone <span style="text-transform:none;letter-spacing:0;color:var(--ink-soft);font-weight:500">(optional — for a faster call back)</span></label>
+        <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="(425) 000-0000" />
+      </div>
+      <div class="field">
+        <label for="project">Project type</label>
+        <select id="project" name="project">
+          <option>Interior painting</option>
+          <option>Exterior painting</option>
+          <option>Mill-work / trim</option>
+          <option>Pressure washing</option>
+          <option>Staining</option>
+          <option>A few things / not sure yet</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="details">Tell me about the project</label>
+        <textarea id="details" name="details" placeholder="Rooms, square footage, timeline, color ideas — whatever you've got."></textarea>
+      </div>
+      <div class="field">
+        <label>Add photos <span style="text-transform:none;letter-spacing:0;color:var(--ink-soft);font-weight:500">(optional, helps me quote faster)</span></label>
+        <div class="photo-drop" id="photoDrop" role="button" tabindex="0" aria-label="Add photos of your project">
+          <span class="pic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3.2"/></svg></span>
+          <span><span class="pt">Tap to add photos of your project</span><span class="ps">JPG or PNG · up to 6 photos</span></span>
+        </div>
+        <input id="photoInput" type="file" accept="image/*" multiple hidden />
+        <div class="photo-grid" id="photoGrid"></div>
+      </div>
+
+      <div class="field human-check">
+        <label for="human">Quick check: what is <span id="mathQ">3 + 4</span>?</label>
+        <input id="human" name="human" type="text" inputmode="numeric" autocomplete="off" placeholder="Answer" />
+      </div>
+
+      <!-- honeypot: hidden from people, bots fill it -->
+      <input type="text" name="_honey" id="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+      <div class="form-foot">
+        <button class="btn btn-primary" type="submit">Send request</button>
+        <p class="form-note">Opens your email app with the details filled in.</p>
+      </div>
+      <p class="form-msg" id="formMsg" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+</main>
+
+<!-- FOOTER -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-top">
+      <a class="brand" href="#top">
+        <span class="swatch" aria-hidden="true"></span>
+        <span class="name">Lapiers Painting<small style="color:#7A808B">CHRIS LAPIERS, OWNER</small></span>
+      </a>
+      <div class="foot-contact">
+        <a href="tel:+14252106481">425-210-6481 &nbsp;·&nbsp; call or text</a>
+        <a href="mailto:Lapierspainting@gmail.com">Lapierspainting@gmail.com</a>
+        <span>Serving the Eastside &amp; greater Northwest</span>
+        <span class="foot-meta">WA Contractor Reg. # <span class="placeholder">[ add your L&amp;I number ]</span></span>
+      </div>
+    </div>
+    <div class="foot-rule"></div>
+    <div class="foot-bottom">
+      <span>© <span id="yr"></span> Lapiers Painting. Interior &amp; exterior house painting.</span>
+      <span>Licensed &amp; insured &nbsp;<span class="placeholder">[confirm]</span></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // year
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // headline brushstroke paint-on (after fonts settle), respecting reduced motion
+  const rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(!rm){
+    window.addEventListener('load', ()=>{
+      const s = document.querySelector('.hero h1 .accent .stroke');
+      if(s) s.classList.add('animate');
+    });
+  }
+
+  // scroll reveal
+  const obs = document.querySelectorAll('.obs');
+  if('IntersectionObserver' in window && !rm){
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+    },{threshold:.14, rootMargin:'0px 0px -8% 0px'});
+    obs.forEach(el=>io.observe(el));
+  } else {
+    obs.forEach(el=>el.classList.add('in'));
+  }
+
+  /* ============================================================
+     QUOTE FORM SETUP  — one-click, free, no server
+     Delivery is handled by FormSubmit (free): it emails the
+     request to the inbox AND sends the customer an instant
+     auto-reply — all in one submission. Cloudinary (also free)
+     hosts customer photos and adds the links.
+     ------------------------------------------------------------
+     1) FormSubmit: no signup needed. The FIRST time the form is
+        submitted, FormSubmit emails NOTIFY_EMAIL a one-time
+        "Activate Form" link — click it once and you're live.
+        (To hide the email in the page source, submit once, then
+        replace FORMSUBMIT_ID below with the alias code FormSubmit
+        gives you, e.g. "a1b2c3d4...").
+     2) Cloudinary: free account at https://cloudinary.com →
+        Settings → Upload → add an UNSIGNED upload preset →
+        paste the cloud name + preset name below.
+     ============================================================ */
+  const FORMSUBMIT_ID     = "Lapierspainting@gmail.com"; // inbox email OR your FormSubmit alias code
+  const CLOUDINARY_CLOUD  = "";   // e.g. "lapiers-painting"
+  const CLOUDINARY_PRESET = "";   // your unsigned upload preset name
+  const NOTIFY_EMAIL = "Lapierspainting@gmail.com";
+  const AUTO_REPLY = "Thanks for reaching out to Lapiers Painting! I've got your request and I'll get back to you, usually the same day. If it's urgent, call or text me at 425-210-6481. — Chris";
+
+  const oneClick = !!FORMSUBMIT_ID;
+
+  const MAX_PHOTOS = 6;
+  const MAX_MB = 12;
+  const photosReady = CLOUDINARY_CLOUD && CLOUDINARY_PRESET;
+
+  const form = document.getElementById('quoteForm');
+  const msg = document.getElementById('formMsg');
+  const drop = document.getElementById('photoDrop');
+  const input = document.getElementById('photoInput');
+  const grid = document.getElementById('photoGrid');
+  const submitBtn = form.querySelector('button[type="submit"]');
+  let photos = []; // { file, url(objectURL), id }
+
+  // open file picker
+  drop.addEventListener('click', ()=>input.click());
+  drop.addEventListener('keydown', (e)=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); input.click(); }});
+  input.addEventListener('change', ()=>{ addPhotos(input.files); input.value=''; });
+
+  // drag & drop
+  ['dragenter','dragover'].forEach(ev=>drop.addEventListener(ev,(e)=>{e.preventDefault();drop.classList.add('drag');}));
+  ['dragleave','drop'].forEach(ev=>drop.addEventListener(ev,(e)=>{e.preventDefault();drop.classList.remove('drag');}));
+  drop.addEventListener('drop',(e)=>{ if(e.dataTransfer&&e.dataTransfer.files) addPhotos(e.dataTransfer.files); });
+
+  function addPhotos(fileList){
+    const incoming = Array.from(fileList);
+    for(const f of incoming){
+      if(photos.length >= MAX_PHOTOS){ flash(`That's the max of ${MAX_PHOTOS} photos.`,'err'); break; }
+      if(!f.type.startsWith('image/')){ flash('Photos only, please (JPG or PNG).','err'); continue; }
+      if(f.size > MAX_MB*1024*1024){ flash(`Each photo needs to be under ${MAX_MB} MB.`,'err'); continue; }
+      photos.push({ file:f, url:URL.createObjectURL(f), id:'p'+Date.now()+Math.random().toString(36).slice(2,6) });
+    }
+    renderPhotos();
+  }
+
+  function renderPhotos(){
+    grid.innerHTML = '';
+    photos.forEach(p=>{
+      const t = document.createElement('div');
+      t.className = 'thumb'; t.dataset.id = p.id;
+      t.innerHTML = `<img src="${p.url}" alt="Project photo">`+
+        `<button type="button" class="rm" aria-label="Remove photo">&times;</button>`;
+      t.querySelector('.rm').addEventListener('click',()=>{
+        URL.revokeObjectURL(p.url);
+        photos = photos.filter(x=>x.id!==p.id);
+        renderPhotos();
+      });
+      grid.appendChild(t);
+    });
+    const count = photos.length;
+    drop.querySelector('.pt').textContent = count
+      ? `${count} photo${count>1?'s':''} added — tap to add more`
+      : 'Tap to add photos of your project';
+  }
+
+  function flash(text, kind){ msg.textContent = text; msg.className = 'form-msg '+(kind||''); }
+  function setUploading(id, on){
+    const t = grid.querySelector(`.thumb[data-id="${id}"]`);
+    if(!t) return;
+    t.classList.toggle('up', on);
+    if(on && !t.querySelector('.spin')){
+      const s = document.createElement('div'); s.className='spin';
+      s.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><path d="M21 12a9 9 0 1 1-6.2-8.6" opacity=".9"/></svg>`;
+      t.appendChild(s);
+    } else if(!on){ const s=t.querySelector('.spin'); if(s) s.remove(); }
+  }
+
+  async function uploadPhoto(p){
+    const fd = new FormData();
+    fd.append('file', p.file);
+    fd.append('upload_preset', CLOUDINARY_PRESET);
+    const res = await fetch(`https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD}/image/upload`,{method:'POST',body:fd});
+    if(!res.ok) throw new Error('upload failed');
+    const data = await res.json();
+    return data.secure_url;
+  }
+
+  // upload any selected photos, return their hosted URLs
+  async function uploadAll(){
+    const urls = [];
+    if(!(photos.length && photosReady)) return urls;
+    submitBtn.disabled = true;
+    for(let i=0;i<photos.length;i++){
+      flash(`Uploading photo ${i+1} of ${photos.length}…`,'ok');
+      setUploading(photos[i].id, true);
+      try{ urls.push(await uploadPhoto(photos[i])); }catch(err){ /* skip failed */ }
+      setUploading(photos[i].id, false);
+    }
+    submitBtn.disabled = false;
+    return urls;
+  }
+
+  function mailtoFallback(name, email, phone, project, details, urls){
+    let extra = phone ? ('\nPhone: '+phone) : '';
+    let photoLines = '';
+    if(urls && urls.length) photoLines = '\n\nProject photos:\n' + urls.join('\n');
+    else if(photos.length) photoLines = `\n\n(${photos.length} photo${photos.length>1?'s':''} selected — please attach them to this email before sending.)`;
+    const subject = encodeURIComponent('Quote request — ' + name);
+    const body = encodeURIComponent('Name: '+name+'\nEmail: '+email+extra+'\nProject: '+project+'\n\nDetails:\n'+(details||'(none added)')+photoLines);
+    window.location.href = 'mailto:'+NOTIFY_EMAIL+'?subject='+subject+'&body='+body;
+  }
+
+  function showSuccess(hadPhotos){
+    form.innerHTML = `<div class="sent-ok">
+      <span class="sent-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+      <h3>Request sent — thanks!</h3>
+      <p>I've got your details${hadPhotos?' and photos':''}, and a confirmation is on its way to your email. I'll be in touch, usually the same day. Need me sooner? Call or text <a href="tel:+14252106481">425-210-6481</a>.</p>
+    </div>`;
+  }
+
+  // simple human check: "what is A + B?"
+  const mathQ = document.getElementById('mathQ');
+  const humanInput = document.getElementById('human');
+  let mathAnswer = 0;
+  function newMath(){
+    const a = 1 + Math.floor(Math.random()*5);
+    const b = 1 + Math.floor(Math.random()*5);
+    mathAnswer = a + b;
+    if(mathQ) mathQ.textContent = a + ' + ' + b;
+    if(humanInput) humanInput.value = '';
+  }
+  newMath();
+  const isEmail = (v)=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+
+  // friendlier note when one-click is live
+  if(oneClick){ const n = form.querySelector('.form-note'); if(n) n.textContent = 'One tap and I get it — plus you get an instant confirmation by email.'; }
+
+  form.addEventListener('submit', async (e)=>{
+    e.preventDefault();
+
+    // honeypot: if filled, it's a bot — show success, send nothing
+    const hp = document.getElementById('hp');
+    if(hp && hp.value){ showSuccess(false); return; }
+
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const phone = form.phone.value.trim();
+    const project = form.project.value;
+    const details = form.details.value.trim();
+
+    if(!name){ flash('Add your name so I know who I’m talking to.','err'); return; }
+    if(!isEmail(email)){ flash('Add a valid email so I can send your confirmation and reply.','err'); form.email.focus(); return; }
+    if(parseInt(humanInput.value,10) !== mathAnswer){ flash('The quick math check didn’t match — give it another go.','err'); newMath(); humanInput.focus(); return; }
+
+    const urls = await uploadAll();
+
+    // No delivery configured → fall back to email app
+    if(!oneClick){ flash('Opening your email app…','ok'); mailtoFallback(name,email,phone,project,details,urls); return; }
+
+    const orig = submitBtn.textContent;
+    submitBtn.disabled = true; submitBtn.textContent = 'Sending…';
+    flash('Sending your request…','ok');
+    try{
+      const params = new URLSearchParams();
+      params.append('name', name);
+      params.append('email', email);
+      if(phone) params.append('phone', phone);
+      params.append('project', project);
+      params.append('details', details || '(none added)');
+      if(urls.length) params.append('photos', urls.join('\n'));
+      params.append('_subject', 'New quote request — ' + name);
+      params.append('_template', 'table');
+      params.append('_autoresponse', AUTO_REPLY);
+      params.append('_captcha', 'false');
+      params.append('_honey', '');
+      const res = await fetch('https://formsubmit.co/ajax/' + encodeURIComponent(FORMSUBMIT_ID), {
+        method:'POST', headers:{ 'Accept':'application/json' }, body: params
+      });
+      const data = await res.json();
+      const ok = data && (data.success === true || data.success === 'true');
+      if(ok){ showSuccess(urls.length>0); }
+      else { throw new Error((data && data.message) || 'send failed'); }
+    }catch(err){
+      submitBtn.disabled = false; submitBtn.textContent = orig;
+      flash('Couldn’t send just now — opening your email app instead…','err');
+      setTimeout(()=>mailtoFallback(name,email,phone,project,details,urls), 900);
+    }
+  });
+</script>
+</body>
+</html>
