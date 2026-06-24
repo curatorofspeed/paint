@@ -641,7 +641,6 @@
   const CLOUDINARY_CLOUD  = "dy1ituuto";       // Cloudinary cloud name
   const CLOUDINARY_PRESET = "laiperspainting"; // unsigned upload preset name
   const NOTIFY_EMAIL = "Lapierspainting@gmail.com";
-  const AUTO_REPLY = "Thanks for reaching out to Lapiers Painting! I've got your request and I'll get back to you, usually the same day. If it's urgent, call or text me at 425-210-6481. — Chris";
 
   const oneClick = !!FORMSUBMIT_ID;
 
@@ -749,7 +748,7 @@
     form.innerHTML = `<div class="sent-ok">
       <span class="sent-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
       <h3>Request sent — thanks!</h3>
-      <p>I've got your details${hadPhotos?' and photos':''}, and a confirmation is on its way to your email. I'll be in touch, usually the same day. Need me sooner? Call or text <a href="tel:+14252106481">425-210-6481</a>.</p>
+      <p>I've got your details${hadPhotos?' and photos':''} and I'll be in touch, usually the same day. Need me sooner? Call or text <a href="tel:+14252106481">425-210-6481</a>.</p>
     </div>`;
   }
 
@@ -768,7 +767,7 @@
   const isEmail = (v)=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
 
   // friendlier note when one-click is live
-  if(oneClick){ const n = form.querySelector('.form-note'); if(n) n.textContent = 'One tap and I get it — plus you get an instant confirmation by email.'; }
+  if(oneClick){ const n = form.querySelector('.form-note'); if(n) n.textContent = 'One tap and it lands in my inbox — usually answered the same day.'; }
 
   form.addEventListener('submit', async (e)=>{
     e.preventDefault();
@@ -805,10 +804,9 @@
       if(urls.length) params.append('photos', urls.join('\n'));
       params.append('_subject', 'New quote request — ' + name);
       params.append('_template', 'table');
-      params.append('_autoresponse', AUTO_REPLY);
       params.append('_captcha', 'false');
       params.append('_honey', '');
-      const res = await fetch('https://formsubmit.co/ajax/' + encodeURIComponent(FORMSUBMIT_ID), {
+      const res = await fetch('https://formsubmit.co/ajax/' + FORMSUBMIT_ID, {
         method:'POST', headers:{ 'Accept':'application/json' }, body: params
       });
       const data = await res.json();
